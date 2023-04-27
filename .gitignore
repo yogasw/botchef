@@ -1,0 +1,27 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
+
+environment.js
+
+.idea/
+
+.expo-shared/
+
+*.tgz
+.env
+fastlane/report.xml
+*.zip
+*.ipa
+*.apk
+dist
