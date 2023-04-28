@@ -1,12 +1,13 @@
 "use strict";
 
-import { Request, Response, Express } from "express";
+import express, { Request, Response, Express } from "express";
 import { TestController } from "../controllers/test";
 import {WebhookController} from "../controllers/webhook";
 
 const webhookController = new WebhookController();
 
 module.exports = (app: Express) => {
+  app.use(express.json());
   app.get("/", (req: Request, res: Response) => {
     res.send("Botchef Server API");
   });
