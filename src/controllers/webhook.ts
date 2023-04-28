@@ -16,5 +16,9 @@ type AppCenterReq = {
 export class WebhookController {
   AppCenter = (req: AppCenterReq, resp: Response) => {
     // TODO: save to DB or something
+
+    return resp.status(200).send({
+      status: "ok"
+    })
   };
 }
