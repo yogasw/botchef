@@ -1,12 +1,9 @@
 import {SequalizeDB, sequelize} from "./db";
+import Sequelize from "sequelize";
 
 const db: SequalizeDB = {
-    sequelize: undefined,
+    apps: require("./apps.model")(sequelize, Sequelize),
+    sequelize: sequelize,
 };
-const Sequelize = require("sequelize");
 
-db.sequelize = sequelize;
-db.apps = require("./apps.model")(sequelize, Sequelize);
-
-module.exports = db;
-
+export default db

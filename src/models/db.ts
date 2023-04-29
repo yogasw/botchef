@@ -3,8 +3,8 @@ import Sequelize from "sequelize";
 import dbConfig from "../config/db";
 
 export type SequalizeDB = {
-  apps?: any,
-  sequelize: undefined,
+  apps: any,
+  sequelize: any,
 };
 
 // @ts-ignore
