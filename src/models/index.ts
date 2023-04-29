@@ -1,6 +1,5 @@
 import {SequalizeDB, sequelize} from "./db";
 
-require("dotenv").config();
 const db: SequalizeDB = {
     sequelize: undefined,
 };
