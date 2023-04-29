@@ -18,6 +18,7 @@ module.exports = (app: Express) => {
   });
 
   app.post("/webhook/appcenter", webhookController.AppCenter);
-  app.get("/xlsx/download", excelController.TestSaveExcel);
+  app.get("/xlsx/save", excelController.TestSaveExcel);
+  app.get("/xlsx/download", excelController.TestDownloadExcel);
 };
 
