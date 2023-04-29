@@ -1,10 +1,12 @@
 "use strict";
 
-import express, { Request, Response, Express } from "express";
-import { TestController } from "../controllers/test";
+import express, {Request, Response, Express} from "express";
+import {TestController} from "../controllers/test";
 import {WebhookController} from "../controllers/webhook";
+import {ExcelController} from "../controllers/excel";
 
 const webhookController = new WebhookController();
+const excelController = new ExcelController();
 
 module.exports = (app: Express) => {
   app.use(express.json());
@@ -16,5 +18,6 @@ module.exports = (app: Express) => {
   });
 
   app.post("/webhook/appcenter", webhookController.AppCenter);
+  app.get("/xlsx/download", excelController.TestSaveExcel);
 };
 
