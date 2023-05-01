@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+        title Node.js with TailwindCSS, Express and Pug
+        link(href="../styles/style.css", rel="stylesheet")
+    body
+        div
+            label.block.text-sm.font-medium.text-gray-700(for='about')  About
+            .mt-1
+                textarea#about.shadow-sm.mt-1.block.w-full.border.border-gray-300.rounded-md(name='about' rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='you@example.com')
+            p.mt-2.text-sm.text-gray-500 Brief description for your profile. URLs are hyperlinked.
+
+
+

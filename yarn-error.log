@@ -1,0 +1,66 @@
+Arguments: 
+  /Users/yogasetiawan/.nvm/versions/node/v17.0.1/bin/node /opt/homebrew/Cellar/yarn/1.22.18/libexec/bin/yarn.js add @tailwindcss/forms --dev
+
+PATH: 
+  /Users/yogasetiawan/.rvm/gems/ruby-3.0.2/bin:/Users/yogasetiawan/.rvm/gems/ruby-3.0.2@global/bin:/Users/yogasetiawan/.rvm/rubies/ruby-3.0.2/bin:/opt/homebrew/bin:/Users/yogasetiawan/.fly/bin:/Users/yogasetiawan/Library/pnpm:/Users/yogasetiawan/.deta/bin:/Users/yogasetiawan/.pyenv/shims:/Users/yogasetiawan/.docker/bin:/Users/yogasetiawan/.rbenv/shims:/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/sbin:/opt/homebrew/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/yogasetiawan/.poetry/bin:/Users/yogasetiawan/.gem/bin:/Users/yogasetiawan/.gem/ruby/3.0.0/bin:/Users/yogasetiawan/.nvm/versions/node/v17.0.1/bin:/Users/yogasetiawan/Library/Python/3.8/bin:/Users/yogasetiawan/.app/chromedriver:/Users/yogasetiawan/.deno/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/yogasetiawan/go-workspace/bin:/Users/yogasetiawan/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/yogasetiawan/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/yogasetiawan/.antigen/bundles/zsh-users/zsh-completions:/Users/yogasetiawan/.antigen/bundles/zsh-users/zsh-autosuggestions:/Users/yogasetiawan/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/yogasetiawan/.gradle/wrapper/dists/gradle-6.2-all/dvufqs6kielxeao781pmk5huj/gradle-6.2/bin:/Users/yogasetiawan/Library/Android/sdk/emulator:/Users/yogasetiawan/Library/Android/sdk/tools:/Users/yogasetiawan/Library/Android/sdk/tools/bin:/Users/yogasetiawan/Library/Android/sdk/platform-tools:/Users/yogasetiawan/Library/Android/sdk/build-tools/30.0.3:/Users/yogasetiawan/.app:/Users/yogasetiawan/.rvm/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  17.0.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/yogasetiawan/Library/Caches/Yarn/v6/npm-supports-color-8.1.1-cd6fc17e28500cff56c1b86c0a7fd4a54a73005c-integrity/node_modules/supports-color/browser.js' -> '/Users/yogasetiawan/code/work/botchef/node_modules/concurrently/node_modules/supports-color/browser.js'
+
+npm manifest: 
+  {
+    "name": "botchef",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "npx tsc",
+      "start": "node dist/index.js",
+      "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
+      "dev": "nodemon --delay 500ms src/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@tailwindcss/forms": "^0.5.3",
+      "@types/jsonwebtoken": "^9.0.2",
+      "autoprefixer": "^10.4.14",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "json-as-xlsx": "^2.5.3",
+      "jsonwebtoken": "^9.0.0",
+      "openai": "^3.2.1",
+      "pg": "^8.10.0",
+      "pg-hstore": "^2.3.4",
+      "postcss": "^8.4.23",
+      "postcss-cli": "^10.1.0",
+      "pug": "^3.0.2",
+      "sequelize": "^6.31.0",
+      "tailwindcss": "^3.3.2"
+    },
+    "devDependencies": {
+      "@types/express": "^4.17.17",
+      "@types/node": "^18.16.0",
+      "concurrently": "^8.0.1",
+      "nodemon": "^2.0.22",
+      "ts-node": "^10.9.1",
+      "typescript": "^5.0.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
