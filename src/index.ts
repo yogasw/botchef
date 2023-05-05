@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import db from "./models";
-import path from "path";
 
 const routes = require("./routes");
 dotenv.config();
