@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "start": "node dist/index.js",
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
-    "dev": "nodemon --delay 500ms src/index.ts"
+    "build-client": "cd client-setting && npm run build",
+    "start": "nodemon --delay 500ms src/index.ts"
   },
   "keywords": [],
   "author": "",

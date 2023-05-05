@@ -5,6 +5,7 @@ import {TestController} from "../controllers/test";
 import {WebhookController} from "../controllers/webhook";
 import {ExcelController} from "../controllers/excel";
 import { SettingController } from "../controllers/setting";
+import path from "path";
 
 const webhookController = new WebhookController();
 const excelController = new ExcelController();
@@ -19,7 +20,10 @@ module.exports = (app: Express) => {
   });
 
   app.post("/webhook/appcenter", webhookController.AppCenter);
-  app.get("/setting/:jwt", SettingController);
+  app.use(express.static(path.join(__dirname,"../../client-setting", "build")));
+  app.get("/setting/:jwt", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../client-setting","build", "index.html"));
+  });
   app.get("/xlsx/save", excelController.TestSaveExcel);
   app.get("/xlsx/download", excelController.TestDownloadExcel);
 };
