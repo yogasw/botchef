@@ -14,7 +14,7 @@ export default function FormInput() {
         method: "POST",
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/xlsx"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           description
