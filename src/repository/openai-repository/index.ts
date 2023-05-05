@@ -17,27 +17,64 @@ buatkan saya template bot text untuk ${description} dalam result json object
 3. serta response text nya
 4. ketika greeting harus memberikan list menu yang tersedia
 5. jawaban harus berupa json object saja tidak boleh ada string lain
+6. response harus berupa text
+7. harus selalu membawa satu intent dengan is_fallback true
+
+Type your response here:
+{
+    intent:        string;
+    response:      string;
+    training:      string[];
+    is_fallback:   boolean;
+    context:       string;
+    input_context: string;
+}
+
+Example Response:
 [
   {
+    "intent": "fallback",
+    "response": "maaf saya tidak mengerti, silahkan balas halo/hai untuk memulai",
+    "training": [],
+    "is_fallback": true,
+    "context": "fallback",
+    "input_context": ""
+  },
+  {
     "intent": "greeting",
-    "response": "selamat datang di chatbot restoran ku, pilih 1 informasi 2 untuk menu,",
+    "response": "selamat datang di chatbot restoran ku, pilih 1. informasi menu hari ini 2. info harga menu ayam bakar,",
     "training": [
       "hai",
       "halo",
+      "selamat pagi"
     ],
     "is_fallback": false,
-     "context": "greeting",
-     "input_context": "",
+    "context": "greeting",
+    "input_context": ""
   },
   {
     "is_fallback": false,
     "input_context": "greeting",
-    "context": "menu",
-    "intent": "menu",
-    "response": "menu hari ini adalah nasi goreng",
+    "context": "menu_hari_ini",
+    "intent": "menu_hari_ini",
+    "response": "menu hari ini adalah nasi goreng dan nasi rendang",
     "training": [
+      "1",
+      "satu",
       "menu",
-      "apa saja menu hari ini",
+      "apa saja menu hari ini"
+    ]
+  },
+  {
+    "is_fallback": false,
+    "input_context": "greeting",
+    "context": "menu_ayam_bakar",
+    "intent": "menu_ayam_bakar",
+    "response": "untuk menu ayam bakar 15ribu",
+    "training": [
+      "dua",
+      "2",
+      "harga ayam bakar"
     ]
   }
 ]
