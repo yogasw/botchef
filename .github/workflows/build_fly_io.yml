@@ -1,0 +1,19 @@
+name: Build to fly.io
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Setup and Build to fly.io
+    steps:
+      - name: install fly cli
+        uses: actions/checkout@v3
+      - run: sh <(curl -s https://fly.io/install.sh)
+      - run: /home/runner/.fly/bin/flyctl version
+      - run: /home/runner/.fly/bin/flyctl deploy  --local-only --access-token ${{ secrets.FLY_TOKEN }}
+
+      
+      
