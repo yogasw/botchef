@@ -4,7 +4,6 @@ import express, {Request, Response, Express} from "express";
 import {TestController} from "../controllers/test";
 import {WebhookController} from "../controllers/webhook";
 import {ExcelController} from "../controllers/excel";
-import { SettingController } from "../controllers/setting";
 import path from "path";
 
 const webhookController = new WebhookController();

@@ -8,10 +8,10 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export async function GenerateBotTemplate(): Promise<CreateCompletionRequest> {
+export async function GenerateBotTemplate(description: string): Promise<CreateCompletionRequest> {
   return new Promise((resolve, reject) => {
     const prompt = `
-buatkan saya template bot text untuk jasa foto copy dalam result json object
+buatkan saya template bot text untuk ${description} dalam result json object
 1. 5 menu
 2. nama intent dan training pharse 
 3. serta response text nya
@@ -25,9 +25,11 @@ buatkan saya template bot text untuk jasa foto copy dalam result json object
       "hai",
       "halo",
     ],
+    "is_fallback": false,
     "context": "greeting"
   },
   {
+    "is_fallback": false,
     "input_context": "greeting",
     "context": "menu",
     "intent": "menu",
@@ -45,13 +47,13 @@ buatkan saya template bot text untuk jasa foto copy dalam result json object
       messages: [
         {
           role: "user",
-          content: prompt,
+          content: prompt
         }
-      ],
+      ]
     })
       .then((result: CreateCompletionRequest) => {
-      // @ts-ignore
-        let message = result?.data?.choices[0].message?.content
+        // @ts-ignore
+        let message = result?.data?.choices[0].message?.content;
         resolve(result);
       })
       .catch((e: any) => {
