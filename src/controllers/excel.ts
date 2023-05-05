@@ -102,19 +102,10 @@ export class ExcelController {
   };
 
   TestDownloadExcel = async (req: Request, res: Response) => {
-    let intents: any[] = [];
-    await GenerateBotTemplate(req.body.description)
-      .then((response) => {
-        try {
-          // @ts-ignore
-          intents = JSON.parse(response?.data?.choices[0].message.content);
-        } catch (e) {
-          console.log(e);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await GenerateBotTemplate("Jasa Pembuatan Website");
+      // @ts-ignore
+      const intents = JSON.parse(response?.data?.choices[0].message.content);
 
     // @ts-ignore
     const newData = intents.map(intent => {
