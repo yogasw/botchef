@@ -6,10 +6,10 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
+  file-saver: ^2.0.5
   react: ^18.2.0
   react-dom: ^18.2.0
   react-scripts: 5.0.1
-  solid: link:@heroicons/react/solid
   tailwindcss: ^3.3.2
   web-vitals: ^2.1.4
 
@@ -18,10 +18,10 @@ dependencies:
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0_yxlyej73nftwmh2fiao7paxmlm
+  file-saver: 2.0.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_cugg7xek4apa4xx5ause2litde
-  solid: link:@heroicons/react/solid
   web-vitals: 2.1.4
 
 devDependencies:
@@ -4969,6 +4969,10 @@ packages:
       loader-utils: 2.0.4
       schema-utils: 3.1.2
       webpack: 5.82.0
+    dev: false
+
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
     dev: false
 
   /filelist/1.0.4:

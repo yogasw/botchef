@@ -1,13 +1,17 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import db from "./models";
-
+const cors = require('cors');
 const routes = require("./routes");
 dotenv.config();
 
 const app: Express = express();
+// CORS middleware
 const port = process.env.PORT;
+app.use(cors());
+app.options('*', cors());
 routes(app);
+
 
 // Sync the User table with the database schema
 db.sequelize.sync({ alter: true, logging: console.log })

@@ -24,7 +24,7 @@ module.exports = (app: Express) => {
     res.sendFile(path.join(__dirname, "../../client-setting","build", "index.html"));
   });
   app.get("/xlsx/save", excelController.TestSaveExcel);
-  app.get("/xlsx/download", excelController.TestDownloadExcel);
+  app.post("/xlsx/download", excelController.TestDownloadExcel);
 };
 
 

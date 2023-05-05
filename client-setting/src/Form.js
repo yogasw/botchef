@@ -1,26 +1,63 @@
+import { useState } from "react";
+import { saveAs } from 'file-saver'
+
 export default function FormInput() {
+  const [loading, setLoading] = useState(false);
+  const [description, setDescription] = useState("");
+  // const URL = "http://localhost:5000/xlsx/download";
+  const URL = "/xlsx/download";
   const onSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
-    console.log("refresh prevented");
+    fetch(URL,
+      {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/xlsx"
+        },
+        body: JSON.stringify({
+          description
+        })
+      })
+      .then(response => response.blob())
+      .then(blob => saveAs(blob, 'Bot.xlsx'))
+      .then((data) => {
+        // console.log(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
   };
   return (
-    <div className="flex items-start space-x-4">
+    <div className={`flex items-start space-x-4 ${loading && "animate-pulse"}`}>
+      {loading && (
+        <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+          <div
+            className="border-t-transparent border-solid animate-spin  rounded-full border-blue-400 border-8 h-64 w-64"></div>
+        </div>
+      )}
       <div className="min-w-0 flex-1 p-4">
         <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
-           Description
+          Description
         </label>
         <form onSubmit={onSubmit} className="relative">
-          <div className="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+          <div
+            className="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
             <label htmlFor="comment" className="sr-only">
-              type your bot description
+              Type your bot description
             </label>
             <textarea
               rows={3}
               name="comment"
               id="comment"
               className="block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm"
-              placeholder="Add your comment..."
-              defaultValue={''}
+              placeholder="Type your bot description..."
+              defaultValue={""}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
             />
 
             {/* Spacer element to match the height of the toolbar */}
@@ -38,6 +75,7 @@ export default function FormInput() {
             </div>
             <div className="flex-shrink-0">
               <button
+                disabled={loading}
                 type="submit"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 loading"
               >
@@ -48,5 +86,5 @@ export default function FormInput() {
         </form>
       </div>
     </div>
-  )
+  );
 }
