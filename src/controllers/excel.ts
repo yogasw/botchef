@@ -116,86 +116,78 @@ export class ExcelController {
         console.log(error);
       });
 
+    // @ts-ignore
+    const newData = intents.map(intent => {
       // @ts-ignore
-      const newData = intents.map(intent => {
-        // @ts-ignore
-        return intent.training.map((input, index, array) => {
-          let excelContent: IntentExcel = {
-            input: input
-          };
+      return intent.training.map((input, index, array) => {
+        let excelContent: IntentExcel = {
+          input: input
+        };
 
-          if (index != 0) {
-            return excelContent;
-          }
-
-          excelContent = {
-            ...excelContent,
-            intent: intent?.intent,
-            parent: intent?.input_context,
-            is_fallback: intent?.is_fallback,
-            back_to_parent: false,
-            tag: "",
-            response: intent?.response,
-            response_type: "text"
-          };
-
+        if (index != 0) {
           return excelContent;
-        });
-      });
-
-      // @ts-ignore
-      let contents = newData.reduce((a, b) => [...a, ...b], []);
-
-      const excelFormat: CustomSheet[] = [
-        {
-          sheet: "1_bot_flow",
-          columns: [
-            {label: "intent_name", value: (row: IntentExcel) => row.intent},
-            {label: "input", value: (row: IntentExcel) => row.input},
-            {label: "response", value: (row: IntentExcel) => (row.response)},
-            {label: "response_type", value: (row: IntentExcel) => (row.response_type)},
-            {label: "parent", value: (row: IntentExcel) => (row.parent)},
-            {label: "back_to_parent", value: (row: IntentExcel) => (row.is_fallback)},
-            {label: "tag", value: (row: IntentExcel) => (row.is_fallback)},
-            {label: "is_fallback", value: (row: IntentExcel) => (row.is_fallback)}
-          ],
-          content: contents
-        },
-        {
-          sheet: "9_engine_config",
-          columns: [
-            {label: "platform", value: (row: any) => row.platform},
-            {label: "timezone", value: (row: any) => row.timezone},
-            {label: "default_language_code", value: (row: any) => row.label}
-          ],
-          content: [
-            {platform: "dialogflow", timezone: "Asia/Bangkok", label: "id"}
-          ]
         }
-      ];
 
-      // @ts-ignore
-      let settings: ISettings = {
-        fileName: (req.query.filename ?? "Spreadsheet") as string, // Name of the resulting spreadsheet
-        writeOptions: {
-          type: "buffer",
-          bookType: "xlsx"
-        } // Style options from https://docs.sheetjs.com/docs/api/write-options
-      };
+        excelContent = {
+          ...excelContent,
+          intent: intent?.intent,
+          parent: intent?.input_context,
+          is_fallback: intent?.is_fallback,
+          back_to_parent: false,
+          tag: "",
+          response: intent?.response,
+          response_type: "text"
+        };
 
-      const buffer = xlsx(excelFormat, settings);
+        return excelContent;
+      });
+    });
 
-      return res.writeHead(200, {
-        "Content-Type": "application/octet-stream",
-        "Content-disposition": `attachment; filename=${settings.fileName}.xlsx`
-      }).end(buffer);
-    } catch (e) {
-      console.log(e);
-      if (e instanceof Error) {
-        return res.status(400).send({
-          message: e.message
-        })
+    // @ts-ignore
+    let contents = newData.reduce((a, b) => [...a, ...b], []);
+
+    const excelFormat: CustomSheet[] = [
+      {
+        sheet: "1_bot_flow",
+        columns: [
+          { label: "intent_name", value: (row: IntentExcel) => row.intent },
+          { label: "input", value: (row: IntentExcel) => row.input },
+          { label: "response", value: (row: IntentExcel) => (row.response) },
+          { label: "response_type", value: (row: IntentExcel) => (row.response_type) },
+          { label: "parent", value: (row: IntentExcel) => (row.parent) },
+          { label: "back_to_parent", value: (row: IntentExcel) => (row.is_fallback) },
+          { label: "tag", value: (row: IntentExcel) => (row.is_fallback) },
+          { label: "is_fallback", value: (row: IntentExcel) => (row.is_fallback) }
+        ],
+        content: contents
+      },
+      {
+        sheet: "9_engine_config",
+        columns: [
+          { label: "platform", value: (row: any) => row.platform },
+          { label: "timezone", value: (row: any) => row.timezone },
+          { label: "default_language_code", value: (row: any) => row.label }
+        ],
+        content: [
+          { platform: "dialogflow", timezone: "Asia/Bangkok", label: "id" }
+        ]
       }
-    }
+    ];
+
+    // @ts-ignore
+    let settings: ISettings = {
+      fileName: (req.query.filename ?? "Spreadsheet") as string, // Name of the resulting spreadsheet
+      writeOptions: {
+        type: "buffer",
+        bookType: "xlsx"
+      } // Style options from https://docs.sheetjs.com/docs/api/write-options
+    };
+
+    const buffer = xlsx(excelFormat, settings);
+
+    return res.writeHead(200, {
+      "Content-Type": "application/octet-stream",
+      "Content-disposition": `attachment; filename=${settings.fileName}.xlsx`
+    }).end(buffer);
   };
 }
