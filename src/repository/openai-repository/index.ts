@@ -26,7 +26,8 @@ buatkan saya template bot text untuk ${description} dalam result json object
       "halo",
     ],
     "is_fallback": false,
-    "context": "greeting"
+     "context": "greeting",
+     "input_context": "",
   },
   {
     "is_fallback": false,
