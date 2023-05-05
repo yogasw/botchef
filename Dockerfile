@@ -6,7 +6,9 @@ RUN apk add --no-cache
 WORKDIR /app/src
 COPY . .
 
+RUN cd client-setting && npm install && npm run build
 RUN npm install
 RUN npm run build
+
 
 CMD ["node", "dist/index.js"]
