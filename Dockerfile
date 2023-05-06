@@ -6,10 +6,23 @@ RUN apk add --no-cache
 WORKDIR /app/src
 COPY . .
 
-RUN cd client-setting && npm install && npm run build
-RUN rm -rf client-setting/node_modules
 RUN npm install
 RUN npm run build
 
+WORKDIR /app
 
-CMD ["npm", "run","prod"]
+RUN mv src/node_modules node_modules
+RUN mv src/dist botchef
+RUN rm -rf src/
+
+ENTRYPOINT ["/app"]
+
+# Production Stage
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates nodejs
+
+WORKDIR /app
+COPY --from=builder app/node_modules node_modules
+COPY --from=builder app/botchef dist
+
+CMD ["node", "dist/index.js"]
