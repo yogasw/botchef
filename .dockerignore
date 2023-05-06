@@ -1,9 +1,6 @@
+.*
 node_modules
 nodemon.json
 Dockerfile
 docker-compose.yml
-.dockerignore
-.env_sample
-.env
 package-lock.json
-dist
