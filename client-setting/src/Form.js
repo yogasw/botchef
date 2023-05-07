@@ -92,13 +92,13 @@ export default function FormInput() {
               >
                 Generate
               </button>
-
-              {errMessage && (<div className="text-red-500 text-right">
-                {!errMessage ? "Generate" : errMessage}
-              </div>)}
             </div>
           </div>
         </form>
+
+        {errMessage && (<div className="text-red-500 text-right">
+          {!errMessage ? "Generate" : errMessage}
+        </div>)}
       </div>
     </div>
   );
