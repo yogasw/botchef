@@ -183,10 +183,15 @@ export class ExcelController {
       } catch (e) {
           if (e instanceof Error) {
               console.error(e)
-              return
+              return res.status(400).send({
+                  message: e.message
+              })
           }
 
           console.log(e)
+              return res.status(500).send({
+                  message: 'internal server error'
+              })
       }
   }
 }
