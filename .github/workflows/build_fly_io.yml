@@ -14,7 +14,7 @@ jobs:
       - run: sh <(curl -s https://fly.io/install.sh)
       - run: /home/runner/.fly/bin/flyctl version
       - run: /home/runner/.fly/bin/flyctl auth docker --access-token ${{secrets.FLY_TOKEN}}
-      - run: /home/runner/.fly/bin/flyctl deploy --local-only --access-token ${{secrets.FLY_TOKEN}}
+      - run: /home/runner/.fly/bin/flyctl deploy
 
 
 
