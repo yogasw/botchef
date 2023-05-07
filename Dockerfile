@@ -51,11 +51,11 @@ ENV NODE_ENV production
 WORKDIR /app
 
 # Copy package.json so that package manager commands can be used.
-COPY --from=deps ${HOME}/node_modules node_modules
+COPY --from=build ${HOME}/package.json package.json
 
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.
-COPY --from=build ${HOME}/package.json package.json
+COPY --from=deps ${HOME}/node_modules node_modules
 COPY --from=build ${HOME}/dist dist
 COPY --from=build ${HOME}/client-setting/build client-setting/build
 
