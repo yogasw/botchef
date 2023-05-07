@@ -12,6 +12,7 @@ processes = []
 [build]
 
 [env]
+  DOCKER_BUILDKIT = "1"
 
 [experimental]
   auto_rollback = true
