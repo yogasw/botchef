@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
       - run: sh <(curl -s https://fly.io/install.sh)
       - run: /home/runner/.fly/bin/flyctl version
-      - run: /home/runner/.fly/bin/flyctl deploy --access-token ${{ secrets.FLY_TOKEN }}
+      - run: /home/runner/.fly/bin/flyctl deploy --access-token ${{secrets.FLY_TOKEN}}
 
 
 
