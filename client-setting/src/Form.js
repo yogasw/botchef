@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver'
 export default function FormInput() {
   const [loading, setLoading] = useState(false);
   const [description, setDescription] = useState("");
+  const [errMessage, setErrMessage] = useState("");
   // const URL = "http://localhost:5000/xlsx/download";
   const URL = "/xlsx/download";
   const onSubmit = (e) => {
@@ -22,10 +23,11 @@ export default function FormInput() {
       })
       .then(response => {
         if (!response.ok){
-          throw new Error(`HTTP error code ${response.statusCode} with: ${response.body}`)
+          console.log(response)
+          throw new Error(`HTTP error ${response.status} : ${response.statusText}`)
         }
 
-        response.blob()
+        return response.blob()
       })
       .then(blob => saveAs(blob, 'Bot.xlsx'))
       .then((data) => {
@@ -33,6 +35,9 @@ export default function FormInput() {
         setLoading(false);
       })
       .catch((err) => {
+        if (err instanceof Error) {
+          setErrMessage(err.message)
+        }
         setLoading(false);
       });
   };
@@ -87,6 +92,10 @@ export default function FormInput() {
               >
                 Generate
               </button>
+
+              {errMessage && (<div className="text-red-500 text-right">
+                {!errMessage ? "Generate" : errMessage}
+              </div>)}
             </div>
           </div>
         </form>
