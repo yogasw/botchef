@@ -20,7 +20,13 @@ export default function FormInput() {
           description
         })
       })
-      .then(response => response.blob())
+      .then(response => {
+        if (!response.ok){
+          throw new Error(`HTTP error code ${response.statusCode} with: ${response.body}`)
+        }
+
+        response.blob()
+      })
       .then(blob => saveAs(blob, 'Bot.xlsx'))
       .then((data) => {
         // console.log(data);
