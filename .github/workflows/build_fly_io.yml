@@ -10,6 +10,7 @@ jobs:
     name: Setup and Build to fly.io
     env:
       FLY_ACCESS_TOKEN: ${{secrets.FLY_TOKEN}}
+      DOCKER_BUILDKIT: 1
     steps:
       - name: install fly cli
         uses: actions/checkout@v3

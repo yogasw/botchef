@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 ARG HOME="/usr/src/app"
 ARG NODE_VERSION=16
-ARG DOCKER_BUILDKIT=1
 
 # Use node image for base image for all stages.
 FROM node:${NODE_VERSION}-alpine as base
