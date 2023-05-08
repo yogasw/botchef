@@ -103,7 +103,7 @@ export class ExcelController {
 
   TestDownloadExcel = async (req: Request, res: Response) => {
       try {
-          const response = await GenerateBotTemplate("Jasa Pembuatan Website");
+          const response = await GenerateBotTemplate(req.body.description);
           // @ts-ignore
           const intents = JSON.parse(response?.data?.choices[0].message.content);
 
